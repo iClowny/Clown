@@ -1,17 +1,11 @@
 const Sprites = {
     // Desenha o Jogador
     drawPlayer(ctx, x, y, className, fallbackColor) {
-        // Tenta pegar a imagem correspondente à classe (ex: Assets.warrior)
         const img = Assets[className]; 
-
-        // Verifica se a imagem existe e foi carregada
-        if (img && isLoaded(img)) {
-            // Desenha a imagem (arquivo PNG)
-            // ctx.drawImage(imagem, x, y, largura, altura);
+        if (img && img.complete && img.naturalHeight !== 0) {
             ctx.drawImage(img, x, y, CONFIG.TILE, CONFIG.TILE);
         } else {
-            // --- PLANO B (FALLBACK) ---
-            // Se não tiver imagem, desenha o quadrado colorido antigo
+            // Fallback do Jogador
             ctx.fillStyle = fallbackColor;
             ctx.fillRect(x + 4, y + 4, 24, 24);
             ctx.fillStyle = "white";
@@ -24,26 +18,29 @@ const Sprites = {
     // Desenha o Cenário
     drawTile(ctx, x, y, type) {
         let img = null;
-        let fallbackColor = "#000";
+        // MUDANÇA AQUI: Cor padrão para chão é verde escuro, não branco
+        let fallbackColor = "#1a3a1a"; 
 
         if (type === 1) {
             img = Assets.wall;
-            fallbackColor = "#444"; // Cor da parede se faltar imagem
+            fallbackColor = "#444"; // Cor de parede se faltar imagem
         } else {
             img = Assets.floor;
-            fallbackColor = "#1a3a1a"; // Cor do chão se faltar imagem
+            // fallbackColor já é verde escuro
         }
 
-        if (img && isLoaded(img)) {
+        if (img && img.complete && img.naturalHeight !== 0) {
             ctx.drawImage(img, x, y, CONFIG.TILE, CONFIG.TILE);
         } else {
-            // Plano B do cenário
+            // Plano B do cenário: Desenha a cor sólida
             ctx.fillStyle = fallbackColor;
             ctx.fillRect(x, y, CONFIG.TILE, CONFIG.TILE);
-             if (type === 1) {
+            
+            // Se for parede e estiver sem imagem, desenha uma borda para destacar
+            if (type === 1) {
                  ctx.strokeStyle = "#222";
                  ctx.strokeRect(x, y, CONFIG.TILE, CONFIG.TILE);
-             }
+            }
         }
     }
 };
