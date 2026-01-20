@@ -86,6 +86,7 @@ const Game = {
             this.ctx, 
             Math.floor(CONFIG.W/2) * CONFIG.TILE, 
             Math.floor(CONFIG.H/2) * CONFIG.TILE, 
+            this.player.class.toLowerCase(), // Passa 'warrior', 'mage', etc.
             this.player.color
         );
     }
