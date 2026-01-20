@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clown RPG - Modular Edition</title>
+    <title>RPG Clown - Modular</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div id="game-container">
         <div id="ui-layer">
             <div id="hud">
-                <span>HP: <b id="hp-val">100</b></span>
-                <span>MP: <b id="mp-val">50</b></span>
+                <span>HP: <b id="hp-val">--</b></span>
+                <span>MP: <b id="mp-val">--</b></span>
                 <span>LVL: <b id="lvl-val">1</b></span>
             </div>
         </div>
@@ -19,11 +20,23 @@
         <canvas id="gameCanvas"></canvas>
 
         <div id="screen-selector" class="overlay">
-            <h1>ESCOLHA SUA CLASSE</h1>
+            <h1 style="color: yellow; text-shadow: 2px 2px red;">RPG CLOWN</h1>
+            <h2>ESCOLHA SUA CLASSE</h2>
             <div class="class-options">
-                <button onclick="Game.start('warrior')">GUERREIRO</button>
-                <button onclick="Game.start('mage')">MAGO</button>
-                <button onclick="Game.start('arrow')">ARQUEIRO</button>
+                <button class="btn-class warrior" onclick="Game.start('warrior')">GUERREIRO</button>
+                <button class="btn-class mage" onclick="Game.start('mage')">MAGO</button>
+                <button class="btn-class arrow" onclick="Game.start('arrow')">ARQUEIRO</button>
+            </div>
+        </div>
+
+        <div id="battle-overlay" class="overlay" style="display: none;">
+            <h2 id="battle-title" style="color: red;">INIMIGO</h2>
+            <div id="battle-enemy-visual"></div>
+            <p>HP Inimigo: <span id="e-hp">0</span></p>
+            <div class="class-options">
+                <button class="btn-action" onclick="Combat.attack()">ATACAR</button>
+                <button class="btn-action" onclick="Combat.magic()">MAGIA (10 MP)</button>
+                <button class="btn-action" onclick="Combat.flee()">FUGIR</button>
             </div>
         </div>
     </div>
@@ -34,5 +47,6 @@
     <script src="js/player.js"></script>
     <script src="js/combat.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 </html>
