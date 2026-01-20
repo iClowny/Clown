@@ -4,12 +4,11 @@ const Combat = {
 
     initiate(type) {
         this.active = true;
-        Game.mode = 'BATTLE'; // Pausa o mapa
+        Game.mode = 'BATTLE'; 
         
         // Define inimigo
         this.enemy = { name: "Mímico", hp: 50, max: 50, atk: 10, xp: 50 };
         
-        // Atualiza HTML da batalha
         document.getElementById('battle-overlay').style.display = 'flex';
         document.getElementById('battle-title').innerText = this.enemy.name;
         document.getElementById('e-hp').innerText = this.enemy.hp;
@@ -38,17 +37,26 @@ const Combat = {
         
         if(this.enemy.hp <= 0) {
             alert("Venceu!");
+            
+            // --- ATUALIZA QUEST SE FOR O MÍMICO ---
+            if (this.enemy.name === "Mímico") {
+                Game.player.quests.mimicKilled = true;
+                console.log("Quest Atualizada: Mímico Morto!");
+            }
+
             this.end();
         } else {
-            // Contra-ataque simples
+            // --- CONTRA-ATAQUE DO INIMIGO ---
             setTimeout(() => {
+                if(!this.active) return; // Se a luta acabou, não ataca
                 Game.player.hp -= this.enemy.atk;
                 Game.player.updateHud();
+                
                 if(Game.player.hp <= 0) {
                     alert("Game Over");
                     location.reload();
                 }
-            }, 200);
+            }, 500);
         }
     },
 

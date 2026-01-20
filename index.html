@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPG Clown - Com Imagens!</title>
+    <title>RPG Clown - Quests & NPCs</title>
     <link rel="icon" type="image/png" href="assets/icon.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -40,12 +40,22 @@
                 <button class="btn-action" onclick="Combat.flee()">FUGIR</button>
             </div>
         </div>
+
+        <div id="dialog-box" class="overlay" style="display: none; justify-content: flex-end;">
+            <div class="dialog-content">
+                <h3 id="npc-name" style="color: yellow; margin: 0;">Nome do NPC</h3>
+                <p id="npc-text" style="margin: 10px 0;">Texto aqui...</p>
+                <button onclick="NPC.closeDialog()">Fechar</button>
+            </div>
+        </div>
     </div>
 
     <script src="js/config.js"></script>
-    <script src="js/assets.js"></script> <script src="js/sprites.js"></script>
+    <script src="js/assets.js"></script>
+    <script src="js/sprites.js"></script>
     <script src="js/map.js"></script>
     <script src="js/player.js"></script>
+    <script src="js/npc.js"></script>
     <script src="js/combat.js"></script>
     <script src="js/main.js"></script>
 </body>

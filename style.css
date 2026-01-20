@@ -17,3 +17,23 @@ button:hover { background: #555; }
 .arrow { border-color: #44ff44; color: #44ff44; }
 
 #battle-enemy-visual { width: 64px; height: 64px; margin: 10px; background: red; }
+
+/* ... Adicione no final do style.css ... */
+
+.dialog-content {
+    background: #222;
+    border: 4px double white;
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 15px;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 -5px 20px black;
+}
+
+.dialog-content button {
+    float: right;
+    background: #444;
+    border: 1px solid #fff;
+    color: white;
+}
