@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clown RPG - Modular Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="ui-layer">
+            <div id="hud">
+                <span>HP: <b id="hp-val">100</b></span>
+                <span>MP: <b id="mp-val">50</b></span>
+                <span>LVL: <b id="lvl-val">1</b></span>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="screen-selector" class="overlay">
+            <h1>ESCOLHA SUA CLASSE</h1>
+            <div class="class-options">
+                <button onclick="Game.start('warrior')">GUERREIRO</button>
+                <button onclick="Game.start('mage')">MAGO</button>
+                <button onclick="Game.start('arrow')">ARQUEIRO</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/sprites.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/combat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
